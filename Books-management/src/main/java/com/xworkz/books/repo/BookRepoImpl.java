@@ -5,6 +5,7 @@ import com.xworkz.books.util.BookUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BookRepoImpl implements BookRepo{
@@ -41,5 +42,46 @@ public class BookRepoImpl implements BookRepo{
         }
 
         return "Data Not inserted ";
+    }
+
+    @Override
+    public void readAll() {
+
+       Connection connection =BookUtil.getConnection();
+        PreparedStatement preparedStatement=null;
+        ResultSet resultSet=null;
+        try {
+         preparedStatement    =connection.prepareStatement("select * from book_info");
+         resultSet =preparedStatement.executeQuery();
+        while (resultSet.next()){
+            System.out.println(resultSet.getInt("bookid"));
+            System.out.println(resultSet.getString("bookName"));
+            System.out.println(resultSet.getString("author"));
+            System.out.println(resultSet.getDouble("price"));
+            System.out.println(resultSet.getString("genre"));
+            System.out.println(resultSet.getString("publisherName"));
+            System.out.println(resultSet.getString("language"));
+            System.out.println("----------------------------");
+        }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            if (preparedStatement!=null){
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
     }
 }

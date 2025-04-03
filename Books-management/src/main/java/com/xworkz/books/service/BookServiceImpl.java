@@ -15,4 +15,9 @@ public class BookServiceImpl implements BookService{
         }
         return "You can't Pass Null values";
     }
+
+    @Override
+    public void getAll() {
+        repo.readAll();
+    }
 }

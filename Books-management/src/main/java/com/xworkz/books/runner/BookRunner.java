@@ -18,7 +18,8 @@ public class BookRunner {
 
 
         BookService service=new BookServiceImpl();
-        System.out.println(service.saveBookInfo(infoDto));
+//        System.out.println(service.saveBookInfo(infoDto));
+        service.getAll();
 
 
     }
