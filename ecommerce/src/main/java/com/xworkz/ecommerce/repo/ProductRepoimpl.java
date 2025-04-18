@@ -5,24 +5,27 @@ import com.xworkz.ecommerce.entity.ProductEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import java.util.Collections;
+
 import java.util.List;
 
 public class ProductRepoimpl implements ProductRepo{
     @Override
     public void savedProduct(ProductEntity productEntity) {
-     EntityManager em= Persistence.createEntityManagerFactory("x-workz").createEntityManager();
+     EntityManager em= Persistence.createEntityManagerFactory("x-workz")
+             .createEntityManager();
      em.getTransaction().begin();
-     em.persist(productEntity);
+     em.persist(productEntity);//SAVE //MERGE//FIND //REMOVE
         System.out.println("Data inserted");
      em.getTransaction().commit();
+
     }
 
     @Override
     public ProductEntity getProduct(String productName) {
     EntityManager entityManager=    Persistence.createEntityManagerFactory("x-workz").createEntityManager();
-       Query query =entityManager.createNamedQuery("getUsersNames");
-        List<String> ref=query.getResultList();
+       Query query =entityManager.createNamedQuery("getProductByName");
+        ProductEntity entity=(ProductEntity) query.getResultList();
+        System.out.println(entity);
         return null;
     }
 
