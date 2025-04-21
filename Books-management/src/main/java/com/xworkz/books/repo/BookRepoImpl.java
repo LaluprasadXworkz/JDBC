@@ -22,7 +22,7 @@ public class BookRepoImpl implements BookRepo{
           preparedStatement.setDouble(3,dto.getPrice());
           preparedStatement.setString(4,dto.getGenre());
           preparedStatement.setString(5,dto.getPublisherName());
-          preparedStatement.setString(6,dto.getLanguage());
+          preparedStatement.setString(6 ,dto.getLanguage());
            check= preparedStatement.executeUpdate();
             System.out.println(check);
             if(check>=1){

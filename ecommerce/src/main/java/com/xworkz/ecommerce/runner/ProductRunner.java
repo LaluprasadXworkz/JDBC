@@ -10,13 +10,13 @@ import java.util.List;
 public class ProductRunner {
     public static void main(String[] args) {
         ProductEntity entity=new ProductEntity();
-        entity.setProductName("Tv");
+        entity.setProductName("Fan");
         entity.setCategory("electricals");
         entity.setMfd(LocalDate.of(2025,03,25));
         entity.setExp(LocalDate.of(2028,06,12));
         entity.setAvailable(true);
         entity.setPrice(25000);
-        entity.setCompany("samsung");
+        entity.setCompany("usha");
 
         ProductRepo repo =new ProductRepoimpl();
 //        repo.savedProduct(entity);
@@ -28,8 +28,11 @@ public class ProductRunner {
 //            System.out.println(names);
 //        }
 
-       double price =repo.getPriceByName("Tv");
-        System.out.println("Price :"+price);
+//       double price =repo.getPriceByName("Tv");
+//        System.out.println("Price :"+price);
+
+        repo.updateMfdExpPriceIsAvailableByCompanyName(
+                LocalDate.of(2025,03,17),LocalDate.of(2026,01,25),1452.25,true,"usha");
 
     }
 }
