@@ -11,5 +11,5 @@ public interface ProductRepo {
     List<String> getProductsName();
     double getPriceByName(String name);
     boolean updateMfdExpPriceIsAvailableByCompanyName(LocalDate mfg, LocalDate exp, double price, boolean isAvailable, String company);
-
+    List<Object[]> getAllProduNameandCategory();
 }

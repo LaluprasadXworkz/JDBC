@@ -9,10 +9,13 @@ import java.time.LocalDate;
 
 
 
-//@NamedQuery(name = "getProductByName",query = "select  p from ProductEntity p where p.productName=:name")
-//@NamedQuery(name = "getProductsNames",query = "select p.productName from ProductEntity p ")
-//@NamedQuery(name = "getPriceByProductName",query = "select p.price from ProductEntity p where" +
-//        " p.productName=:name ")
+@NamedQuery(name = "getProductByName",query = "select  p from ProductEntity p where p.productName=:name")
+@NamedQuery(name = "getProductsNames",query = "select p.productName from ProductEntity p ")
+@NamedQuery(name = "getPriceByProductName",query = "select p.price from ProductEntity p where" +
+        " p.productName=:name ")
+
+@NamedQuery(name = "getProductName",query = "select p.productName from ProductEntity p")//List<Object>
+@NamedQuery(name = "getAllProduNameandCategory",query = "select p.productName ,p.category from ProductEntity p")
 @NamedQuery(name = "updateMfdExpPriceIsAvailableByCompanyName",query = "Update ProductEntity p set p.mfd=:mDate," +
                                                         "p.exp=:exp ,p.price=:price ,p.isAvailable=:available where p.company=:company")
 @Entity

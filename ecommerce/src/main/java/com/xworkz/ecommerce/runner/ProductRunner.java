@@ -31,8 +31,20 @@ public class ProductRunner {
 //       double price =repo.getPriceByName("Tv");
 //        System.out.println("Price :"+price);
 
-        repo.updateMfdExpPriceIsAvailableByCompanyName(
-                LocalDate.of(2025,03,17),LocalDate.of(2026,01,25),1452.25,true,"usha");
+//        repo.updateMfdExpPriceIsAvailableByCompanyName(
+//                LocalDate.of(2025,03,17),LocalDate.of(2026,01,25),1452.25,true,"usha");
+
+        List<Object[]>    results= repo.getAllProduNameandCategory();
+//        for(Datatyepe red:results){
+//
+//        }
+
+
+        for (Object[] obj : results) {
+            String productName = (String) obj[0];
+            String category = (String) obj[1];
+            System.out.println("Product: " + productName + ", Category: " + category);
+        }
 
     }
 }

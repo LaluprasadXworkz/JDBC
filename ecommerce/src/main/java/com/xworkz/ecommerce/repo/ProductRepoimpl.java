@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 public class ProductRepoimpl implements ProductRepo{
@@ -48,6 +49,10 @@ public class ProductRepoimpl implements ProductRepo{
       EntityManager entityManager =Persistence.createEntityManagerFactory("x-workz").createEntityManager();
         entityManager.getTransaction().begin();
         Query query=entityManager.createNamedQuery("updateMfdExpPriceIsAvailableByCompanyName");
+//        Query query = entityManager.createQuery("UPDATE ProductEntity p SET p.mfd " +
+//                "= :mfg, p.exp = :exp, p.price = :price, p.isAvailable = :isAvailable " +
+//                "WHERE p.company = :company");
+
         query.setParameter("mDate",mfg);
         query.setParameter("exp",exp);
         query.setParameter("price",price);
@@ -61,6 +66,15 @@ public class ProductRepoimpl implements ProductRepo{
         }
         return false;
     }
+
+    @Override
+    public List<Object[]> getAllProduNameandCategory() {
+        EntityManager entityManager = Persistence.createEntityManagerFactory("x-workz").createEntityManager();
+        Query query = entityManager.createNamedQuery("getAllProduNameandCategory");
+        List<Object[]> results = query.getResultList();
+        return results;
+    }
+
 
 }
 

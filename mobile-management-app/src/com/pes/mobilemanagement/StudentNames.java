@@ -13,8 +13,15 @@ public class StudentNames {
         for (int i=0;i<studentsNames.length;i++){
             System.out.println(studentsNames[i]);
         }
+        System.out.println("\n");
+        System.out.println("reverse");
+        for (int i = studentsNames.length-1; i >0 ; i--) {
+            System.out.print(studentsNames[i]+" ");
+
+        }
 
 
+        String[] names=new String[11];
 
 
 
